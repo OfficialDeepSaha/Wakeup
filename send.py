@@ -11,6 +11,7 @@ urls = [
     "https://api.prepsathi.co.in/health",
     "https://api.prepsathi.co.in/",
     "https://wakeup-g5sp.onrender.com/",
+    "https://prepsathi-backend.onrender.com/",
 ]
 
 # POST login requests to send
