@@ -1,15 +1,15 @@
 import asyncio
 from contextlib import asynccontextmanager
-import os
-import requests
 from datetime import datetime
+
+import requests
 from fastapi import FastAPI
 import uvicorn
 
 # GET URLs to ping
 urls = [
     "https://api.prepsathi.co.in/health",
-    "https://wakeup-g5sp.onrender.com/",
+    "https://wakeup-jnxs.onrender.com/",
 ]
 
 # POST login requests to send
@@ -33,7 +33,7 @@ async def keep_awake_loop():
                 loop = asyncio.get_running_loop()
                 response = await loop.run_in_executor(
                     None,
-                    lambda u=url: requests.get(u, timeout=5)
+                    lambda u=url: requests.get(u, timeout=50)
                 )
                 print(f"[{datetime.now().strftime('%H:%M:%S')}] Pinged {url} | Status: {response.status_code}")
             except requests.exceptions.RequestException as e:
@@ -45,14 +45,14 @@ async def keep_awake_loop():
                 loop = asyncio.get_running_loop()
                 response = await loop.run_in_executor(
                     None,
-                    lambda r=req: requests.post(r["url"], json=r["payload"], timeout=10)
+                    lambda r=req: requests.post(r["url"], json=r["payload"], timeout=50)
                 )
                 print(f"[{datetime.now().strftime('%H:%M:%S')}] POSTed {req['url']} | Status: {response.status_code}")
                 print(f"Response: {response.text}")
             except requests.exceptions.RequestException as e:
                 print(f"[{datetime.now().strftime('%H:%M:%S')}] Failed to POST {req['url']}: {e}")
 
-        await asyncio.sleep(15)
+        await asyncio.sleep(50)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
