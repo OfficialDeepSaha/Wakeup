@@ -10,6 +10,7 @@ import uvicorn
 urls = [
     "https://api.prepsathi.co.in/health",
     "https://wakeup-jnxs.onrender.com/",
+    "https://astrochat-backend-n0ni.onrender.com",
 ]
 
 # POST login requests to send
